@@ -2,12 +2,12 @@
 
 **Intelligent AI-powered metadata generation for Obsidian vaults**
 
-AutoAiTag automatically enhances your Obsidian notes with AI-generated summaries, tags, and intelligent date detection. It's designed to work with local language models (LM Studio) for privacy and cost-effectiveness.
+AutoAiTag automatically enhances your Obsidian notes with AI-generated summaries, tags, and intelligent date detection. It's designed to work with local language models (LM Studio) for maximum privacy and cost-effectiveness.
 
 ## ✨ Key Features
 
 ### 🤖 AI-Powered Metadata Generation
-- **Smart Summaries**: Generate concise, contextual summaries (max 50 words) for long notes
+- **Smart Summaries**: Generate concise, contextual summaries (max 50 words) for long notes (Configurable; Default=1000 chars)
 - **Intelligent Tagging**: Extract up to 3 relevant keyword tags from note content
 - **Date Detection**: Three-tier system for accurate date extraction:
   1. **AI Detection**: LLM extracts dates from note content with confidence scoring
@@ -17,8 +17,9 @@ AutoAiTag automatically enhances your Obsidian notes with AI-generated summaries
 ### 🛡️ Vault-Safe Processing
 - **Non-destructive**: Preserves all existing frontmatter and metadata
 - **Smart Merging**: Combines new AI tags with existing ones
-- **Idempotent**: Uses `autoAiTag` flag to prevent re-processing
-- **Atomic Writes**: Safe file modifications with backup protection
+- **Smart Update**: Uses `autoAiTag` tag to prevent re-processing files that AutoAiTag has already processed. Can be 'forced' to reprocess all files if need be.
+- **Non Destructive Dry Run**: Use the Dry run option first to see a JSON file containing all the proposed changes before comitting them to your Markdown files. Includes a confidence level for Date parsing.
+
 
 ### ⚡ Performance & Scalability
 - **Multithreaded Processing**: Configurable worker threads for large vaults
@@ -42,7 +43,7 @@ AutoAiTag automatically enhances your Obsidian notes with AI-generated summaries
 ### Quick Install
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/AutoAiTag.git
+git clone https://github.com/tonyknight/AutoAiTag.git
 cd AutoAiTag
 
 # Install dependencies
@@ -58,7 +59,7 @@ python AutoAiTag.py
 pip install requests PyYAML
 
 # Download and run
-wget https://raw.githubusercontent.com/yourusername/AutoAiTag/main/AutoAiTag.py
+wget https://raw.githubusercontent.com/tonyknight/AutoAiTag/main/AutoAiTag.py
 python AutoAiTag.py
 ```
 
@@ -79,7 +80,7 @@ MODEL_NAME = "llama2:7b"  # Your preferred model
 ### Key Configuration Options
 ```python
 # Processing Settings
-DEFAULT_CHAR_LIMIT = 1000      # Minimum characters for AI processing
+DEFAULT_CHAR_LIMIT = 1000      # Minimum characters for AI summary processing
 DEFAULT_WORKERS = 4            # Number of concurrent file processors
 DEFAULT_MAX_CONCURRENT_LLM = 2 # Max simultaneous LLM requests
 REQUEST_TIMEOUT = 60           # LLM response timeout (seconds)
@@ -168,9 +169,6 @@ DEFAULT_MAX_CONCURRENT_LLM = 1
 REQUEST_TIMEOUT = 120
 ```
 
-## 🤝 Contributing
-
-We welcome contributions! Here's how to help:
 
 ### Development Setup
 ```bash
@@ -186,20 +184,13 @@ flake8 AutoAiTag.py
 ```
 
 ### Areas for Improvement
-- **Additional LLM providers** (OpenAI, Anthropic, etc.)
+- **Additional local LLM providers** (Ollama, etc.)
 - **More metadata fields** (reading time, complexity score)
-- **Batch processing** for very large vaults
-- **GUI interface** for non-technical users
+- **GUI interface** for command line haters
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **LM Studio** for providing local LLM capabilities
-- **Obsidian** community for inspiration and feedback
-- **Open source contributors** who make tools like this possible
+This project is licensed under the MIT License.
 
 ## 📞 Support
 
