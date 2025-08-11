@@ -1,0 +1,22 @@
+# AutoAiTag - Obsidian AI Metadata Tool Dependencies
+# Core dependencies for the script to function
+
+# HTTP requests for LM Studio API calls
+requests>=2.28.0
+
+# YAML parsing and generation for frontmatter
+PyYAML>=6.0
+
+# Standard library modules (included with Python 3.7+):
+# - os, sys, json, re, threading, datetime, concurrent.futures
+# - No need to install these separately
+
+# Optional but recommended for better performance:
+# - If you want to use a faster YAML parser:
+# PyYAML[libyaml]>=6.0
+
+# Development dependencies (for contributors):
+# - pytest>=7.0.0
+# - black>=22.0.0
+# - flake8>=5.0.0
+# - mypy>=1.0.0
